@@ -1,0 +1,101 @@
+* { box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f5f6f8;
+  margin: 0;
+  color: #1a1a1a;
+}
+
+.container {
+  max-width: 640px;      
+  margin: 0 auto;
+  padding: 16px;
+}
+
+h1 { font-size: 1.4rem; margin-bottom: 4px; }
+.subtitle { color: #666; margin-top: 0; font-size: 0.9rem; }
+
+.upload-box {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+input[type="file"] { width: 100%; }
+
+img.preview { max-width: 100%; height: auto; border-radius: 6px; }
+
+button {
+  min-height: 44px;     
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+button:disabled { background: #a9b8d9; cursor: not-allowed; }
+
+.btn-row { display: flex; flex-direction: column; gap: 8px; }
+
+.btn-secondary { background: #fff; color: #2563eb; border: 1px solid #2563eb; }
+.btn-secondary:disabled { background: #fff; color: #a9b8d9; border-color: #d9dee8; }
+
+.status {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+.status.loading { background: #eef2ff; color: #3730a3; }
+.status.error { background: #fef2f2; color: #b91c1c; }
+
+.results {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.results[hidden] { display: none; }   /* .results'ın display:flex'i hidden özelliğini eziyordu */
+
+.result-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+}
+.result-card h2 { font-size: 1rem; margin-top: 0; }
+
+.bar {
+  width: 100%;
+  height: 10px;
+  background: #e5e7eb;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+.bar-fill {
+  height: 100%;
+  background: #2563eb;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.history-card { margin-top: 16px; }
+
+#historyList { list-style: none; padding: 0; margin: 0; font-size: 0.9rem; }
+#historyList li { padding: 6px 0; border-bottom: 1px solid #f0f0f0; }
+#historyList li:last-child { border-bottom: none; }
+.history-empty { color: #888; }
+
+@media (min-width: 768px) {
+  button { width: auto; padding: 0 32px; align-self: flex-start; }
+  .btn-row { flex-direction: row; }
+  .results { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+}

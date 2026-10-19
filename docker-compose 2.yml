@@ -1,0 +1,27 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    ports: ["5433:5432"]
+    environment:
+      POSTGRES_USER: kyc
+      POSTGRES_PASSWORD: kyc
+      POSTGRES_DB: kyc_vision
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kyc -d kyc_vision"]
+      interval: 2s
+      timeout: 3s
+      retries: 10
+
+  node-api:
+    build: ./node-api
+    ports: ["3000:3000"]
+    environment:
+      DATABASE_URL: postgresql://kyc:kyc@postgres:5432/kyc_vision
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  pg-data:

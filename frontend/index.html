@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doküman Analiz</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Doküman Analiz Servisi</h1>
+    <p class="subtitle">Bir kimlik / ehliyet / pasaport görseli yükleyin, tipini ve güven yüzdesini görün.</p>
+
+    <div class="upload-box">
+      <input type="file" id="fileInput" accept="image/*" />
+      <img id="preview" class="preview" alt="" hidden />
+      <div class="btn-row">
+        <button id="analyzeBtn" disabled>Analiz Et</button>
+        <button id="clearBtn" class="btn-secondary" disabled>Temizle</button>
+      </div>
+    </div>
+
+    <div id="status" class="status" hidden></div>
+
+    <div id="results" class="results" hidden>
+      <div class="result-card">
+        <h2>Sonuç</h2>
+        <p><strong>Tip:</strong> <span id="resLabel">-</span></p>
+        <p><strong>Geçerli mi:</strong> <span id="resValid">-</span></p>
+        <p><strong>Güven:</strong> <span id="resConfidence">-</span>%</p>
+        <div class="bar"><div id="resBar" class="bar-fill"></div></div>
+      </div>
+    </div>
+
+    <div class="result-card history-card">
+      <h2>Son 5 Analiz</h2>
+      <ul id="historyList"><li class="history-empty">Yükleniyor...</li></ul>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
